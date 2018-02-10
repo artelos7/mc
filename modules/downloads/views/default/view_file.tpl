@@ -21,7 +21,9 @@
 		<param name="FlashVars" value="mp3=<?php echo URL . $file['path_to_file'] .'/'. $file['real_name'] ?>&amp;bgcolor1=ffffff&amp;bgcolor2=cccccc&amp;buttoncolor=999999&amp;buttonovercolor=0&amp;slidercolor1=cccccc&amp;slidercolor2=999999&amp;sliderovercolor=666666&amp;textcolor=0&amp;showvolume=1&amp;showstop=1" />
 	</object><br /><br />
 <?php endif; ?>
-
+<?php if ($file['file_ext'] == 'mp4' || $file['file_ext'] == '3gp'): ?>
+<embed src='/utils/player.swf' type='application/x-shockwave-flash' allowfullscreen='true' allowScriptAccess='always' width='360' height='250' flashvars='set_video1_url=<?php echo URL . $file['path_to_file'] .'/'. $file['real_name'] ?>'/> 
+<br /><br />
 <?php if(!empty($file['file_info'])): ?>
 <i>Дополнительная информация:</i><br />
 <?php echo nl2br($file['file_info']) ?><br />
