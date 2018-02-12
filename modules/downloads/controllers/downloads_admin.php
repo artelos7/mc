@@ -361,7 +361,7 @@ class Downloads_Admin_Controller extends Controller {
 					if (copy($_FILES['file_upload']['tmp_name'], ROOT.$path_to_file.'/'.$_FILES['file_upload']['name'])) {
 						# Удаляем файл, если он был перезагружен
 						if ($action == 'edit') {
-							if ($file['real_name'] != $_FILES['file_upload']['name']) {
+							if ($file['real_name'] != strtolower(main::detranslite($_FILES['file_upload']['name']))) {
 								@unlink(ROOT.$path_to_file.'/'.$file['real_name']);
 							}
 						}
