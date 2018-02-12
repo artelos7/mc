@@ -503,7 +503,7 @@ class Downloads_Controller extends Controller {
 					// Получение информации о файле
 					if (!empty($_FILES['file_upload']['tmp_name'])) {
 						$type = 'upload';
-						$file['real_name'] = $_FILES['file_upload']['name'];
+						$file['real_name'] = strtolower(main::detranslite($_FILES['file_upload']['name']));
 						$file['file_ext'] = array_pop(explode('.', $file['real_name']));
 						$file['filesize'] = filesize($_FILES['file_upload']['tmp_name']);
 					} else if (!empty($_POST['file_import']) && $_POST['file_import'] != 'http://') {
@@ -542,7 +542,7 @@ class Downloads_Controller extends Controller {
    						$path_to_file = DOWNLOADS_DIRECTORY . ($realpath != '' ? $realpath : '') . $file_id;
 
    						if ($type == 'upload') {
-   							$file_path = ROOT . $path_to_file .'/'. $_FILES['file_upload']['name'];
+   							$file_path = ROOT . $path_to_file .'/'. $file['real_name'];
 							copy($_FILES['file_upload']['tmp_name'], $file_path);
 						} else {
 							$file_path = ROOT . $path_to_file .'/'. basename($_POST['file_import']);
@@ -561,7 +561,7 @@ class Downloads_Controller extends Controller {
 								$file['screen1'] = $_FILES['screen1']['name'];
 							}
 						} else if (!empty($_POST['screen1']) && $_POST['screen1'] != 'http://') {
-							$import_file_path = fm::get_real_file_path($_POST['screen_1']);
+							$import_file_path = downloads::get_real_file_path($_POST['screen_1']);
 							$import_file_name = basename($import_file_path);
 							$screen_path = ROOT.$path_to_file.'/'.$import_file_name;
 
@@ -681,7 +681,7 @@ class Downloads_Controller extends Controller {
 						} else if ( ! empty($_POST['screen1']) && $_POST['screen1'] != 'http://') {
 							@unlink(ROOT . $path_to_file .'/'. $file['screen1']);
 						
-							$import_file_path = fm::get_real_file_path($_POST['screen_1']);
+							$import_file_path = downloads::get_real_file_path($_POST['screen_1']);
 							$import_file_name = basename($import_file_path);
 							$screen_path = ROOT . $path_to_file .'/'. $import_file_name;
 
