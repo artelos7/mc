@@ -42,7 +42,7 @@ class Comments_Controller extends Controller {
 		if (!$this->db->get_one("SELECT " . a_safe($comments_data[1]) . " FROM " . a_safe($comments_data[0]) . " WHERE " . a_safe($comments_data[1]) . " = " . intval($_GET['item_id']))) a_error('Не найден обсуждаемый объект');
 
 		# Листинг комментариев
-		$sql = "SELECT SQL_CALC_FOUND_ROWS cp.*, cp.username, u.status AS user_status, up.avatar AS avatar_exists, u.last_visit
+		$sql = "SELECT SQL_CALC_FOUND_ROWS cp.*, u.username, u.status AS user_status, up.avatar AS avatar_exists, u.last_visit
         FROM #__comments_posts AS cp
         LEFT JOIN #__users AS u USING(user_id)
         LEFT JOIN #__users_profiles AS up USING(user_id)
