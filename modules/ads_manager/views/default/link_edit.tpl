@@ -12,9 +12,9 @@
 			<input type="text" name="title" value="<?php echo $link['title'] ?>" /><br />
 
 			URL: <br />
-			<input name="url" type="text" value="<?php echo $link['url'] ?>">
+			<input name="url" type="text" value="<?php echo $link['url'] ?>"><br />
 			Тексты ссылки (новый текст с новой строки)<br />
-			<textarea name="names" wrap="off"><?php echo stripslashes($link['names']) ?></textarea>
+			<textarea name="names" wrap="off"><?php echo stripslashes($link['names']) ?></textarea><br />
 			Площадка<br />
 			<select size="1" name="area_id">
 			<?php foreach($areas as $area): ?>
