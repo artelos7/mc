@@ -107,8 +107,8 @@ class Chat_Controller extends Controller {
 			user_id = '". USER_ID."'
 		");
 
-		 $sql = "SELECT SQL_CALC_FOUND_ROWS cm.*, u.username, u.status AS user_status, up.avatar AS avatar_exists, u.last_visit
-			FROM #__chat_messages AS cm LEFT JOIN #__users AS u USING(user_id) LEFT JOIN #__users_profiles AS up USING(user_id)
+		 $sql = "SELECT SQL_CALC_FOUND_ROWS cm.*, u.username, u.status AS user_status, u.last_visit
+			FROM #__chat_messages AS cm LEFT JOIN #__users AS u USING(user_id)
 			WHERE cm.room_id = ". intval($_GET['room_id']);
 
 		$sql .= " ORDER BY cm.message_id DESC LIMIT $this->start, $this->per_page";
