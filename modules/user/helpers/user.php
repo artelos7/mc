@@ -103,7 +103,6 @@ class user
                 return ($link ? '<a href="' . URL . 'profile/' . $user['username'] . '">' : NULL) . '<span style="color: red;"><b>' . $user['username'] . '</b></span>' . ($link ? '</a>' : NULL);
                 break;
 
-            case 'guest':
             default:
                 return '<b>' . $user['username'] . '</b>';
                 break;
